@@ -1,15 +1,24 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { TopicsService } from './topics.service';
 
 @Component({
   selector: 'app-topics',
-  templateUrl: './topics.component.html',
-  styleUrls: ['./topics.component.css'],
+  template: `
+    <ul class="w-full grid grid-cols-2 gap-3">
+      <app-topic-item
+        *ngFor="let id of topicsId; let i = index"
+        [topicId]="id"
+        [class.col-span-2]="isFourthItem(i)"
+      >
+      </app-topic-item>
+    </ul>
+  `,
 })
 export class TopicsComponent {
   topicsId: number[] = [];
-  constructor(private topicsService: TopicsService) {}
   gridStyle = true;
+
+  constructor(private topicsService: TopicsService) {}
 
   ngOnInit() {
     this.getTopicsId();
@@ -24,7 +33,7 @@ export class TopicsComponent {
   isFourthItem(index: number): boolean {
     if (index == 0) {
       this.gridStyle = false;
-    } else if ((index) % 4 === 0) {
+    } else if (index % 4 === 0) {
       this.gridStyle = !this.gridStyle;
     }
     return this.gridStyle === true;

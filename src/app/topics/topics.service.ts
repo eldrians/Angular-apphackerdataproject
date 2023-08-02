@@ -8,6 +8,7 @@ import { storiesUrl } from '../app.constant';
 export class TopicsService {
   constructor(private http: HttpClient) {}
 
+  // get stories id
   getTopics() {
     return this.http.get(storiesUrl);
   }

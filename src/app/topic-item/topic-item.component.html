@@ -5,18 +5,23 @@
     </h3>
     <div class="flex flex-col">
       <p class="text-grayESB text-xs my-2">
-        {{ topicData?.score }} points by oblio | {{ topicData?.by }}
+        {{ topicData?.score }} points by {{ topicData?.by }} | codeberg.org
       </p>
       <hr />
       <div class="flex flex-row justify-between items-center mt-2 text-xs">
-        <p class="text-grayESB">time</p>
+        <p class="text-grayESB">
+          <fa-icon [icon]="iconClock" class="mr-1"></fa-icon>
+          4 hours ago
+        </p>
         <button
           class="bg-secondaryESB py-2 px-4 rounded shadow-md"
           (click)="toggleCommentSection()"
         >
-          <span class="text-primaryESB font-semibold"
-            >{{ noOfComment }} Comment</span
-          >
+          <span class="text-primaryESB font-semibold">
+            <fa-icon [icon]="iconCommentDots" class="mr-1"></fa-icon>
+            {{ noOfComment }} Comment
+            <fa-icon [icon]="iconArrowRight" class="ml-2"></fa-icon>
+          </span>
         </button>
       </div>
     </div>
@@ -35,15 +40,18 @@
             class="absolute h-fit -top-4 -right-0"
             (click)="toggleCommentSection()"
           >
-            <span class="text-2xl font-semibold cursor-pointer">x</span>
+            <span class="text-2xl font-semibold cursor-pointer">
+              <fa-icon [icon]="iconX" class="ml-2"></fa-icon>
+            </span>
           </button>
         </div>
         <div class="flex flex-row justify-between text-xs items-center my-2">
           <p class="text-grayESB">
             {{ topicData?.score }} points by oblio | {{ topicData?.by }} | time
           </p>
-          <span class="text-darkESB font-semibold"
-            >{{ noOfComment }} Comment</span
+          <span class="text-darkESB font-semibold">
+            <fa-icon [icon]="iconCommentDots" class="mr-1"></fa-icon>
+            {{ noOfComment }} Comment</span
           >
         </div>
       </div>

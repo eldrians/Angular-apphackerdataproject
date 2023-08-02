@@ -14,7 +14,6 @@ interface InputData {
 @Component({
   selector: 'app-comment-item',
   templateUrl: './comment-item.component.html',
-  styleUrls: ['./comment-item.component.css'],
 })
 export class CommentItemComponent {
   @Input() commentId!: number;

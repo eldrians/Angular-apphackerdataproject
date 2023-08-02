@@ -1,6 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { showText } from '../app.constant';
 import { TopicItemService } from './topic-item.service';
+import {
+  faArrowRight,
+  faCommentDots,
+  faClock,
+  faX,
+} from '@fortawesome/free-solid-svg-icons';
 
 interface InputData {
   by: string;
@@ -17,13 +23,16 @@ interface InputData {
 @Component({
   selector: 'app-topic-item',
   templateUrl: './topic-item.component.html',
-  styleUrls: ['./topic-item.component.css'],
 })
 export class TopicItemComponent {
   @Input() topicId!: number;
   topicData!: InputData | undefined;
   noOfComment = 0;
   isHidden = true;
+  iconArrowRight = faArrowRight;
+  iconCommentDots = faCommentDots;
+  iconClock = faClock;
+  iconX = faX;
 
   constructor(private topicItemService: TopicItemService) {}
 

@@ -8,6 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { TopicsComponent } from './topics/topics.component';
 import { TopicItemComponent } from './topic-item/topic-item.component';
 import { CommentItemComponent } from './comment-item/comment-item.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,12 @@ import { CommentItemComponent } from './comment-item/comment-item.component';
     TopicItemComponent,
     CommentItemComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FontAwesomeModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
