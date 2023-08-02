@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { showText } from '../app.constant';
 import { TopicItemService } from './topic-item.service';
 import {
   faArrowRight,

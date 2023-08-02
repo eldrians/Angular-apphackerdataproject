@@ -31,11 +31,8 @@ export class TopicsComponent {
   }
 
   isFourthItem(index: number): boolean {
-    if (index == 0) {
-      this.gridStyle = false;
-    } else if (index % 4 === 0) {
-      this.gridStyle = !this.gridStyle;
-    }
+    this.gridStyle =
+      index === 0 ? false : index % 4 === 0 ? !this.gridStyle : this.gridStyle;
     return this.gridStyle === true;
   }
 }

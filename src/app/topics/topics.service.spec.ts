@@ -3,19 +3,18 @@ import {
   HttpClientTestingModule,
   HttpTestingController,
 } from '@angular/common/http/testing';
-import { CommentItemService } from './comment-item.service';
-import { storyUrl } from '../app.constant';
+import { TopicsService } from './topics.service';
 
-describe('CommentItemService', () => {
-  let service: CommentItemService;
+describe('TopicsService', () => {
+  let service: TopicsService;
   let httpMock: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [CommentItemService],
+      providers: [TopicsService],
     });
-    service = TestBed.inject(CommentItemService);
+    service = TestBed.inject(TopicsService);
     httpMock = TestBed.inject(HttpTestingController);
   });
 
@@ -27,24 +26,20 @@ describe('CommentItemService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should make an HTTP GET request to fetch comment data', () => {
-    const mockCommentId = 123;
-    const mockCommentData = { id: 123, text: 'Test comment' };
-
-    service.getTopicById(mockCommentId).subscribe((response) => {
-      expect(response).toEqual(mockCommentData);
+  it('should make an HTTP GET request to fetch topics', () => {
+    const mockTopics = [1, 2, 3];
+    service.getTopics().subscribe((response) => {
+      expect(response).toEqual(mockTopics);
     });
 
-    const request = httpMock.expectOne(`${storyUrl}/${mockCommentId}.json`);
+    const request = httpMock.expectOne('your_stories_url_here');
     expect(request.request.method).toBe('GET');
-    request.flush(mockCommentData);
+    request.flush(mockTopics);
   });
 
   it('should handle error when HTTP request fails', () => {
-    const mockCommentId = 456;
-    const errorMessage = 'Error fetching comment data';
-
-    service.getTopicById(mockCommentId).subscribe(
+    const errorMessage = 'Error fetching topics';
+    service.getTopics().subscribe(
       () => {
         fail('The request should have failed');
       },
@@ -54,7 +49,7 @@ describe('CommentItemService', () => {
       }
     );
 
-    const request = httpMock.expectOne(`${storyUrl}/${mockCommentId}.json`);
+    const request = httpMock.expectOne('your_stories_url_here');
     expect(request.request.method).toBe('GET');
     request.error(new ErrorEvent('Network error', { message: errorMessage }));
   });

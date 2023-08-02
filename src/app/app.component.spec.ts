@@ -1,29 +1,36 @@
-import { TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
-  beforeEach(() => TestBed.configureTestingModule({
-    imports: [RouterTestingModule],
-    declarations: [AppComponent]
-  }));
+  let fixture: ComponentFixture<AppComponent>;
+  let component: AppComponent;
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [AppComponent],
+    }).compileComponents();
   });
 
-  it(`should have as title 'test-app'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('test-app');
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('test-app app is running!');
+  it('should display app-header', () => {
+    const headerElement = fixture.nativeElement.querySelector('app-header');
+    expect(headerElement).toBeTruthy();
+  });
+
+  it('should display app-topics inside main', () => {
+    const mainElement = fixture.nativeElement.querySelector('main');
+    const appTopicsElement = mainElement.querySelector('app-topics');
+    expect(mainElement).toBeTruthy();
+    expect(appTopicsElement).toBeTruthy();
+  });
+
+  it('should display router-outlet', () => {
+    const routerOutletElement =
+      fixture.nativeElement.querySelector('router-outlet');
+    expect(routerOutletElement).toBeTruthy();
   });
 });
