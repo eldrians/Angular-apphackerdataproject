@@ -5,9 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListStoryComponent } from './list-story/list-story.component';
 import { CommentsComponent } from './comments/comments.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
-  declarations: [AppComponent, ListStoryComponent, CommentsComponent],
+  declarations: [AppComponent, ListStoryComponent, CommentsComponent, HeaderComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
