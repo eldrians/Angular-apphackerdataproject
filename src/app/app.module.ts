@@ -3,13 +3,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ListStoryComponent } from './list-story/list-story.component';
 import { CommentsComponent } from './comments/comments.component';
 import { HeaderComponent } from './header/header.component';
-import { StoryCardComponent } from './story-card/story-card.component';
+import { TopicsComponent } from './topics/topics.component';
+import { TopicItemComponent } from './topic-item/topic-item.component';
 
 @NgModule({
-  declarations: [AppComponent, ListStoryComponent, CommentsComponent, HeaderComponent, StoryCardComponent],
+  declarations: [
+    AppComponent,
+    CommentsComponent,
+    HeaderComponent,
+    TopicsComponent,
+    TopicItemComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],

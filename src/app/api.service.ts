@@ -12,9 +12,8 @@ export class ApiService {
       'https://hacker-news.firebaseio.com/v0/askstories.json?print=pretty';
     return this.http.get(url);
   }
-  getStoryData() {
-    let url =
-      'https://hacker-news.firebaseio.com/v0/item/36956867.json?print=pretty';
+  getStoryData(idStory: number) {
+    let url = `https://hacker-news.firebaseio.com/v0/item/${idStory}.json?print=pretty `;
     return this.http.get(url);
   }
 }
