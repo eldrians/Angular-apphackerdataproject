@@ -1,1 +1,5 @@
 <p>list-story works!</p>
+
+<ul *ngFor="let items of listId">
+  <app-story-card [idStory]="items"></app-story-card>
+</ul>

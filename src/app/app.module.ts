@@ -6,9 +6,10 @@ import { AppComponent } from './app.component';
 import { ListStoryComponent } from './list-story/list-story.component';
 import { CommentsComponent } from './comments/comments.component';
 import { HeaderComponent } from './header/header.component';
+import { StoryCardComponent } from './story-card/story-card.component';
 
 @NgModule({
-  declarations: [AppComponent, ListStoryComponent, CommentsComponent, HeaderComponent],
+  declarations: [AppComponent, ListStoryComponent, CommentsComponent, HeaderComponent, StoryCardComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
