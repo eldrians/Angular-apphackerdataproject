@@ -7,6 +7,7 @@ import { CommentsComponent } from './comments/comments.component';
 import { HeaderComponent } from './header/header.component';
 import { TopicsComponent } from './topics/topics.component';
 import { TopicItemComponent } from './topic-item/topic-item.component';
+import { CommentItemComponent } from './comment-item/comment-item.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { TopicItemComponent } from './topic-item/topic-item.component';
     HeaderComponent,
     TopicsComponent,
     TopicItemComponent,
+    CommentItemComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

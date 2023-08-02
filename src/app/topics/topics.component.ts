@@ -9,6 +9,7 @@ import { TopicsService } from './topics.service';
 export class TopicsComponent {
   topicsId: number[] = [];
   constructor(private topicsService: TopicsService) {}
+  gridStyle = true;
 
   ngOnInit() {
     this.getTopicsId();
@@ -18,5 +19,14 @@ export class TopicsComponent {
     this.topicsService.getTopics().subscribe((res) => {
       this.topicsId = res as number[];
     });
+  }
+
+  isFourthItem(index: number): boolean {
+    if (index == 0) {
+      this.gridStyle = false;
+    } else if ((index) % 4 === 0) {
+      this.gridStyle = !this.gridStyle;
+    }
+    return this.gridStyle === true;
   }
 }

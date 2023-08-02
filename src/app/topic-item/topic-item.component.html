@@ -1,24 +1,24 @@
-<li class="bg-lightESB shadow-xl rounded-md border">
-  <div class="flex flex-col p-4">
+<li class="bg-lightESB shadow-xl rounded-md border h-full">
+  <div class="flex flex-col p-4 justify-between h-full">
+    <h3 class="text-darkESB text-base font-semibold">
+      {{ topicData?.title }}
+    </h3>
     <div class="flex flex-col">
-      <h3 class="text-darkESB text-base font-semibold mb-4">
-        {{ topicData?.title }}
-      </h3>
       <p class="text-grayESB text-xs my-2">
         {{ topicData?.score }} points by oblio | {{ topicData?.by }}
       </p>
-    </div>
-    <hr />
-    <div class="flex flex-row justify-between items-center mt-2 text-xs">
-      <p class="text-grayESB">time</p>
-      <button
-        class="bg-secondaryESB py-2 px-4 rounded shadow-md"
-        (click)="toggleCommentSection()"
-      >
-        <span class="text-primaryESB font-semibold"
-          >{{ noOfComment }} Comment</span
+      <hr />
+      <div class="flex flex-row justify-between items-center mt-2 text-xs">
+        <p class="text-grayESB">time</p>
+        <button
+          class="bg-secondaryESB py-2 px-4 rounded shadow-md"
+          (click)="toggleCommentSection()"
         >
-      </button>
+          <span class="text-primaryESB font-semibold"
+            >{{ noOfComment }} Comment</span
+          >
+        </button>
+      </div>
     </div>
   </div>
 </li>
@@ -27,9 +27,17 @@
   <div class="bg-darkESB/40 h-full w-full flex justify-center items-center">
     <div class="w-2/4 bg-lightESB h-2/3 rounded-md shadow-xl p-6 relative">
       <div class="flex flex-col">
-        <h3 class="text-darkESB text-xl font-semibold">
-          {{ topicData?.title }}
-        </h3>
+        <div class="relative flex flex-row justify-between">
+          <h3 class="text-darkESB text-xl font-semibold">
+            {{ topicData?.title }}
+          </h3>
+          <button
+            class="absolute h-fit -top-4 -right-0"
+            (click)="toggleCommentSection()"
+          >
+            <span class="text-2xl font-semibold cursor-pointer">x</span>
+          </button>
+        </div>
         <div class="flex flex-row justify-between text-xs items-center my-2">
           <p class="text-grayESB">
             {{ topicData?.score }} points by oblio | {{ topicData?.by }} | time
@@ -40,13 +48,8 @@
         </div>
       </div>
       <hr />
-      <div class="py-2">
-        <app-comments></app-comments>
-      </div>
-      <div class="absolute inset-0 w-full h-full flex justify-end">
-        <button class="h-fit pr-2" (click)="toggleCommentSection()">
-          <span class="text-xl font-semibold">x</span>
-        </button>
+      <div class="py-2 overflow-x-auto h-[85%]">
+        <app-comments [commentsId]="topicData?.kids"></app-comments>
       </div>
     </div>
   </div>

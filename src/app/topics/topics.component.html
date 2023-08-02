@@ -1,3 +1,8 @@
-<ul class="w-full grid grid-cols-2 gap-3 ">
-  <app-topic-item *ngFor="let id of topicsId" [topicId]="id"> </app-topic-item>
+<ul class="w-full grid grid-cols-2 gap-3">
+  <app-topic-item
+    *ngFor="let id of topicsId; let i = index"
+    [topicId]="id"
+    [class.col-span-2]="isFourthItem(i)"
+  >
+  </app-topic-item>
 </ul>
