@@ -23,6 +23,7 @@ export class TopicItemComponent {
   @Input() topicId!: number;
   topicData!: InputData | undefined;
   noOfComment = 0;
+  isHidden = true;
 
   constructor(private topicItemService: TopicItemService) {}
 
@@ -34,7 +35,13 @@ export class TopicItemComponent {
     this.topicItemService.getTopicById(this.topicId).subscribe((res) => {
       this.topicData = res as InputData;
       this.noOfComment = this.topicData?.kids?.length || 0;
-      console.log(this.topicData);
     });
+  }
+
+  toggleCommentSection() {
+    this.isHidden = !this.isHidden;
+    if (!this.isHidden) {
+      console.log('kebuka');
+    }
   }
 }
