@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CommentItemComponent } from '../../app/comments/comment-item/comment-item.component';
-import { CommentItemService } from '../../app/comments/comment-item/comment-item.service';
+import { CommentItemComponent } from '../../../app/comments/comment-item/comment-item.component';
+import { CommentItemService } from '../../../app/comments/comment-item/comment-item.service';
 import { of } from 'rxjs';
 
 const mockCommentItemService = jasmine.createSpyObj('CommentItemService', [
