@@ -4,8 +4,8 @@ import {
   tick,
   fakeAsync,
 } from '@angular/core/testing';
-import { TopicsComponent } from './topics.component';
-import { TopicsService } from './topics.service';
+import { TopicsComponent } from '../../app/topics/topics.component';
+import { TopicsService } from '../../app/topics/topics.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { of } from 'rxjs';
 

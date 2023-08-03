@@ -25,6 +25,7 @@ interface InputData {
 })
 export class TopicItemComponent {
   @Input() topicId!: number;
+  @Input() isCard!: boolean;
   topicData!: InputData | undefined;
   noOfComment = 0;
   isHidden = true;
