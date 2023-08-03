@@ -1,0 +1,34 @@
+<div class="fixed w-full h-screen inset-0">
+  <div class="bg-darkESB/40 h-full w-full flex justify-center items-center">
+    <div class="w-2/4 bg-lightESB h-2/3 rounded-md shadow-xl p-6 relative">
+      <div class="flex flex-col">
+        <div class="relative flex flex-row justify-between">
+          <h3 class="text-darkESB text-xl font-semibold">
+            {{ topicData?.title }}
+          </h3>
+          <button
+            class="absolute h-fit -top-4 -right-0"
+            (click)="toggleCommentSection()"
+          >
+            <span class="text-xl font-semibold cursor-pointer">
+              <fa-icon [icon]="iconX" class="ml-2"></fa-icon>
+            </span>
+          </button>
+        </div>
+        <div class="flex flex-row justify-between text-xs items-center my-2">
+          <p class="text-grayESB">
+            {{ topicData?.score }} points by oblio | {{ topicData?.by }} | time
+          </p>
+          <span class="text-darkESB font-semibold">
+            <fa-icon [icon]="iconCommentDots" class="mr-1"></fa-icon>
+            {{ getCommentNumber() }} Comment</span
+          >
+        </div>
+      </div>
+      <hr />
+      <div class="py-2 overflow-x-auto h-[85%]">
+        <app-comments [commentsId]="topicData?.kids"></app-comments>
+      </div>
+    </div>
+  </div>
+</div>

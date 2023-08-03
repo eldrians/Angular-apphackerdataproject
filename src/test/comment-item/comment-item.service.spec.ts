@@ -3,7 +3,7 @@ import {
   HttpClientTestingModule,
   HttpTestingController,
 } from '@angular/common/http/testing';
-import { CommentItemService } from '../../app/comment-item/comment-item.service';
+import { CommentItemService } from '../../app/comments/comment-item/comment-item.service';
 import { storyUrl } from '../../app/app.constant';
 
 describe('CommentItemService', () => {

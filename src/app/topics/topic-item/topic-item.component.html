@@ -1,0 +1,9 @@
+<div *ngIf="isCard === true" class="h-full">
+  <app-card [topicData]="topicData"></app-card>
+</div>
+
+<div *ngIf="isCard === false" class="h-full">
+  <app-list [topicData]="topicData"></app-list>
+</div>
+
+<app-modal *ngIf="!isHidden()"></app-modal>

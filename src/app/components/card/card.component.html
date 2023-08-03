@@ -1,0 +1,31 @@
+<li
+  class="bg-lightESB shadow-xl rounded-md border h-full hover:border-primaryESB transition duration-300 ease-in-out"
+>
+  <div class="flex flex-col p-4 justify-between h-full">
+    <h3 class="text-darkESB text-base font-semibold">
+      {{ topicData?.title }}
+    </h3>
+    <div class="flex flex-col">
+      <p class="text-grayESB text-xs my-2">
+        {{ topicData?.score }} points by {{ topicData?.by }} | codeberg.org
+      </p>
+      <hr />
+      <div class="flex flex-row justify-between items-center mt-2 text-xs">
+        <p class="text-grayESB">
+          <fa-icon [icon]="iconClock" class="mr-1"></fa-icon>
+          4 hours ago
+        </p>
+        <button
+          class="bg-secondaryESB py-2 px-4 rounded shadow-md"
+          (click)="toggleCommentSection()"
+        >
+          <span class="text-primaryESB font-semibold">
+            <fa-icon [icon]="iconCommentDots" class="mr-1"></fa-icon>
+            {{ getCommentNumber() }} Comment
+            <fa-icon [icon]="iconArrowRight" class="ml-2"></fa-icon>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</li>

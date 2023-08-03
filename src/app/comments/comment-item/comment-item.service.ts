@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { storyUrl } from '../app.constant';
+import { baseUrl } from '../../app.constant';
 
 @Injectable({
   providedIn: 'root',
 })
-export class TopicItemService {
+export class CommentItemService {
   constructor(private http: HttpClient) {}
 
-  getTopicById(topicId: number) {
-    return this.http.get(`${storyUrl}/${topicId}.json`);
+  getTopicById(commentId: number) {
+    return this.http.get(`${baseUrl}/item/${commentId}`);
   }
 }
