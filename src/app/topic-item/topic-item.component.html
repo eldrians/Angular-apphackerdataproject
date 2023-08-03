@@ -1,5 +1,5 @@
 <li
-  class="bg-lightESB shadow-xl rounded-md border h-full"
+  class="bg-lightESB shadow-xl rounded-md border h-full hover:border-primaryESB transition duration-300 ease-in-out"
   *ngIf="isCard === true"
 >
   <div class="flex flex-col p-4 justify-between h-full">
@@ -32,35 +32,31 @@
 </li>
 
 <li
-  class="bg-lightESB shadow-xl rounded-md border h-full"
+  class="bg-lightESB shadow-xl rounded-md border h-full hover:bg-orange-50 transition duration-300 ease-in-out"
   *ngIf="isCard === false"
 >
-  <div class="flex flex-col p-4 justify-between h-full">
-    <h3 class="text-darkESB text-base font-semibold">
-      <!-- {{ topicData?.title }} -->
-      Axel
-    </h3>
-    <div class="flex flex-col">
-      <p class="text-grayESB text-xs my-2">
-        {{ topicData?.score }} points by {{ topicData?.by }} | codeberg.org
+  <div class="flex flex-rows items-center p-4 justify-between h-full">
+    <div>
+      <h3 class="text-darkESB text-base font-semibold">
+        {{ topicData?.title }}
+      </h3>
+      <p class="text-grayESB text-xs">
+        {{ topicData?.score }} points by {{ topicData?.by }} | codeberg.org |
+        <fa-icon [icon]="iconClock" class="mx-1"></fa-icon>
+        4 hours ago
       </p>
-      <hr />
-      <div class="flex flex-row justify-between items-center mt-2 text-xs">
-        <p class="text-grayESB">
-          <fa-icon [icon]="iconClock" class="mr-1"></fa-icon>
-          4 hours ago
-        </p>
-        <button
-          class="bg-secondaryESB py-2 px-4 rounded shadow-md"
-          (click)="toggleCommentSection()"
-        >
-          <span class="text-primaryESB font-semibold">
-            <fa-icon [icon]="iconCommentDots" class="mr-1"></fa-icon>
-            {{ noOfComment }} Comment
-            <fa-icon [icon]="iconArrowRight" class="ml-2"></fa-icon>
-          </span>
-        </button>
-      </div>
+    </div>
+    <div class="flex flex-row justify-between items-center text-xs">
+      <button
+        class="bg-secondaryESB py-2 px-4 rounded shadow-md"
+        (click)="toggleCommentSection()"
+      >
+        <span class="text-primaryESB font-semibold">
+          <fa-icon [icon]="iconCommentDots" class="mr-1"></fa-icon>
+          {{ noOfComment }} Comment
+          <fa-icon [icon]="iconArrowRight" class="ml-2"></fa-icon>
+        </span>
+      </button>
     </div>
   </div>
 </li>

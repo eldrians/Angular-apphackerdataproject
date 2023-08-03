@@ -8,7 +8,7 @@ import { TopicsService } from './topics.service';
       <app-topic-item
         *ngFor="let id of topicsId; let i = index; let j = index"
         [topicId]="id"
-        [isCard]="checkCard(i)"
+        [isCard]="!checkCard(i)"
         [class.col-span-2]="checkGrid(i)"
       >
       </app-topic-item>
