@@ -3,7 +3,6 @@ import {
   faArrowRight,
   faCommentDots,
   faClock,
-  faX,
 } from '@fortawesome/free-solid-svg-icons';
 import { DataService } from 'src/app/services/data/data.service';
 
@@ -27,10 +26,9 @@ export class CardComponent {
   @Input() topicData!: InputData | undefined;
 
   // icon
-  iconArrowRight = faArrowRight;
-  iconCommentDots = faCommentDots;
   iconClock = faClock;
-  iconX = faX;
+  iconCommentDots = faCommentDots;
+  iconArrowRight = faArrowRight;
 
   constructor(private global: DataService) {}
 

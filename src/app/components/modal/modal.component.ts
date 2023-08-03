@@ -1,10 +1,5 @@
 import { Component, Input } from '@angular/core';
-import {
-  faArrowRight,
-  faCommentDots,
-  faClock,
-  faX,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCommentDots, faX } from '@fortawesome/free-solid-svg-icons';
 import { DataService } from 'src/app/services/data/data.service';
 
 interface InputData {
@@ -26,10 +21,8 @@ export class ModalComponent {
   @Input() topicData!: InputData | undefined;
 
   // icon
-  iconArrowRight = faArrowRight;
-  iconCommentDots = faCommentDots;
-  iconClock = faClock;
   iconX = faX;
+  iconCommentDots = faCommentDots;
 
   constructor(private global: DataService) {}
 

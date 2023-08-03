@@ -6,7 +6,4 @@ import { Component, Input } from '@angular/core';
 })
 export class CommentsComponent {
   @Input() commentsId?: number[] = [];
-  constructor() {
-    console.log('commentid :', this.commentsId);
-  }
 }

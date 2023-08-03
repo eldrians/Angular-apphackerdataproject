@@ -32,6 +32,7 @@ export class TopicItemComponent {
   getTopicData() {
     this.api.getTopicItem(this.topicId).subscribe((res) => {
       this.topicData = res as InputData;
+      // console.log('topicData :', this.topicData);
       this.setCommentNumber(res?.kids?.length || 0);
     });
   }
