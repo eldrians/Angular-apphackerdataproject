@@ -6,10 +6,10 @@ import { TopicsService } from './topics.service';
   template: `
     <ul class="w-full grid grid-cols-2 gap-3">
       <app-topic-item
-        *ngFor="let id of topicsId; let i = index"
+        *ngFor="let id of topicsId; let i = index; let j = index"
         [topicId]="id"
-        [class.col-span-2]="isFourthItem(i)"
         [isCard]="checkCard(i)"
+        [class.col-span-2]="checkGrid(i)"
       >
       </app-topic-item>
     </ul>
@@ -18,6 +18,7 @@ import { TopicsService } from './topics.service';
 export class TopicsComponent {
   topicsId: number[] = [];
   gridStyle = true;
+  isCards = false;
 
   constructor(private topicsService: TopicsService) {}
 
@@ -36,13 +37,15 @@ export class TopicsComponent {
     );
   }
 
-  isFourthItem(index: number): boolean {
+  checkCard(index: number): boolean {
+    this.isCards =
+      index === 0 ? false : index % 4 === 0 ? !this.isCards : this.isCards;
+    return this.isCards === true;
+  }
+
+  checkGrid(index: number): boolean {
     this.gridStyle =
       index === 0 ? false : index % 4 === 0 ? !this.gridStyle : this.gridStyle;
     return this.gridStyle === true;
-  }
-
-  checkCard(index: number): boolean {
-    return true;
   }
 }
