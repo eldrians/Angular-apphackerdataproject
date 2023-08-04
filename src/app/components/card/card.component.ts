@@ -34,5 +34,10 @@ export class CardComponent {
 
   toggleCommentSection() {
     this.global.toggleCommentSection();
+    this.global.setTopicData(this.topicData);
+  }
+
+  isHidden() {
+    return this.global.getIsHidden();
   }
 }

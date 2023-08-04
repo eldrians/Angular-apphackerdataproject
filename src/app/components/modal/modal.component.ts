@@ -18,7 +18,7 @@ interface InputData {
   templateUrl: './modal.component.html',
 })
 export class ModalComponent {
-  @Input() topicData!: InputData | undefined;
+  topicData!: InputData | undefined;
 
   // icon
   iconX = faX;
@@ -26,10 +26,17 @@ export class ModalComponent {
 
   constructor(private global: DataService) {}
 
+  ngOnInit() {
+    this.topicData = this.getTopicData();
+  }
   toggleCommentSection() {
     this.global.toggleCommentSection();
   }
-  get isHidden() {
+  isHidden() {
     return this.global.getIsHidden();
+  }
+
+  getTopicData() {
+    return this.global.getTopicData();
   }
 }

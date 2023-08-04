@@ -34,6 +34,7 @@ export class ListComponent {
 
   toggleCommentSection() {
     this.global.toggleCommentSection();
+    this.global.setTopicData(this.topicData);
   }
 
   getCommentNumber() {

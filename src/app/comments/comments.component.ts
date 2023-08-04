@@ -12,7 +12,6 @@ export class CommentsComponent {
   constructor(private api: ApiService) {}
 
   ngOnInit() {
-    console.log('comments:', this.commentsId);
     this.getCommentsData();
   }
 
