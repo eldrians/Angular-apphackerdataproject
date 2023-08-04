@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { CommentItemService } from './comment-item.service';
 import { catchError, throwError } from 'rxjs';
 import { ApiService } from '../../services/api/api.service';
 
@@ -19,26 +18,7 @@ interface InputData {
   templateUrl: './comment-item.component.html',
 })
 export class CommentItemComponent {
-  @Input() commentId!: number;
-  commentData!: InputData | undefined;
+  @Input() commentData!: InputData | undefined;
 
-  constructor(
-    private commentItemService: CommentItemService,
-    private api: ApiService
-  ) {}
-
-  ngOnInit() {
-    this.getTopicItem();
-  }
-
-  getTopicItem() {
-    this.api.getTopicItem(this.commentId).subscribe(
-      (res) => {
-        this.commentData = res as InputData;
-      },
-      (error) => {
-        console.error('Error fetching data:', error);
-      }
-    );
-  }
+  constructor(private api: ApiService) {}
 }

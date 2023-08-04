@@ -21,7 +21,7 @@
         >
           <span class="text-primaryESB font-semibold">
             <fa-icon [icon]="iconCommentDots" class="mr-1"></fa-icon>
-            {{ getCommentNumber() }} Comment
+            {{ topicData?.kids?.length || 0 }} Comment
             <fa-icon [icon]="iconArrowRight" class="ml-2"></fa-icon>
           </span>
         </button>

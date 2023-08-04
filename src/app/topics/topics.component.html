@@ -1,7 +1,7 @@
 <ul class="w-full grid grid-cols-2 gap-3">
   <app-topic-item
-    *ngFor="let id of topicsId; let i = index; let j = index"
-    [topicId]="id"
+    *ngFor="let topic of topicsData; let i = index"
+    [topicData]="topic"
     [isCard]="!checkCard(i)"
     [class.col-span-2]="checkGrid(i)"
   >

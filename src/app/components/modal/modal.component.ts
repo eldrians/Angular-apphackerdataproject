@@ -32,8 +32,4 @@ export class ModalComponent {
   get isHidden() {
     return this.global.getIsHidden();
   }
-
-  getCommentNumber() {
-    return this.global.getCommentNumber();
-  }
 }

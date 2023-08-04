@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { ApiService } from '../../services/api/api.service';
 import { DataService } from '../../services/data/data.service';
 
 interface InputData {
@@ -19,29 +18,12 @@ interface InputData {
   templateUrl: './topic-item.component.html',
 })
 export class TopicItemComponent {
-  @Input() topicId!: number;
   @Input() isCard!: boolean;
-  topicData!: InputData | undefined;
+  @Input() topicData!: InputData | undefined;
 
-  constructor(private api: ApiService, private global: DataService) {}
-
-  ngOnInit() {
-    this.getTopicData();
-  }
-
-  getTopicData() {
-    this.api.getTopicItem(this.topicId).subscribe((res) => {
-      this.topicData = res as InputData;
-      // console.log('topicData :', this.topicData);
-      this.setCommentNumber(res?.kids?.length || 0);
-    });
-  }
+  constructor(private global: DataService) {}
 
   isHidden() {
     return this.global.getIsHidden();
-  }
-
-  setCommentNumber(n: number) {
-    this.global.setCommentNumber(n);
   }
 }

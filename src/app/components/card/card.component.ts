@@ -35,8 +35,4 @@ export class CardComponent {
   toggleCommentSection() {
     this.global.toggleCommentSection();
   }
-
-  getCommentNumber() {
-    return this.global.getCommentNumber();
-  }
 }
