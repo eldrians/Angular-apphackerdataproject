@@ -23,19 +23,19 @@ describe('TopicsComponent', () => {
     component = fixture.componentInstance;
   });
 
-  it('should create the TopicsComponent', () => {
+  it('render topics.components', () => {
     expect(component).toBeTruthy();
   });
 
   it('should call getTopicsId and getTopicsData during ngOnInit', () => {
     const getTopicsIdSpy = jest.spyOn(component, 'getTopicsId');
     const getTopicsDataSpy = jest.spyOn(component, 'getTopicsData');
-    fixture.detectChanges(); // Trigger ngOnInit
+    fixture.detectChanges(); 
     expect(getTopicsIdSpy).toHaveBeenCalled();
     expect(getTopicsDataSpy).toHaveBeenCalled();
   });
 
-  it('should set topicsId with data from the ApiService', () => {
+  it('return data from getTopicsId to check api works', () => {
     component.getTopicsId();
     expect(mockApiService.getTopics).toHaveBeenCalled();
     expect(component.topicsId).toEqual([1, 2, 3]);
@@ -56,7 +56,7 @@ describe('TopicsComponent', () => {
     );
   });
 
-  it('should set topicsData with data from the ApiService', () => {
+  it('return data from getTopicsData to check api works', () => {
     component.getTopicsData();
     expect(mockApiService.getTopicsData).toHaveBeenCalled();
     expect(component.topicsData).toEqual([{ id: 1, title: 'Topic 1' }]);
@@ -77,14 +77,14 @@ describe('TopicsComponent', () => {
     );
   });
 
-  it('should return true for index not divisible by 4', () => {
+  it('test checkCard', () => {
     expect(component.checkCard(0)).toBe(false);
     expect(component.checkCard(1)).toBe(false);
     expect(component.checkCard(4)).toBe(true);
     expect(component.checkCard(5)).toBe(true);
   });
 
-  it('should return true for index not divisible by 4', () => {
+  it('test checkGrid', () => {
     expect(component.checkGrid(0)).toBe(false);
     expect(component.checkGrid(1)).toBe(false);
     expect(component.checkGrid(4)).toBe(true);
