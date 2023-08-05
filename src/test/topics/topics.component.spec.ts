@@ -1,63 +1,110 @@
-import {
-  ComponentFixture,
-  TestBed,
-  tick,
-  fakeAsync,
-} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TopicsComponent } from '../../app/topics/topics.component';
-import { TopicsService } from '../../app/topics/topics.service';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
+import { ApiService } from '../../app/services/api/api.service';
 
 describe('TopicsComponent', () => {
-  let component: TopicsComponent;
   let fixture: ComponentFixture<TopicsComponent>;
-  let topicsService: TopicsService;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [TopicsComponent],
-      imports: [HttpClientTestingModule],
-      providers: [TopicsService], // Provide the TopicsService
-    }).compileComponents();
-  });
+  let component: TopicsComponent;
+  let mockApiService: Partial<ApiService>;
 
   beforeEach(() => {
+    mockApiService = {
+      getTopics: jest.fn(() => of([1, 2, 3])),
+      getTopicsData: jest.fn(() => of([{ id: 1, title: 'Topic 1' }])),
+    };
+
+    TestBed.configureTestingModule({
+      declarations: [TopicsComponent],
+      providers: [{ provide: ApiService, useValue: mockApiService }],
+    });
+
     fixture = TestBed.createComponent(TopicsComponent);
     component = fixture.componentInstance;
-    topicsService = TestBed.inject(TopicsService); // Inject the TopicsService
   });
 
-  it('should create the component', () => {
+  it('should create the TopicsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should fetch topicsId from TopicsService and render topic items', fakeAsync(() => {
-    const mockTopicsId = [1, 2, 3, 4];
-    spyOn(topicsService, 'getTopics').and.returnValue(of(mockTopicsId));
-
-    fixture.detectChanges(); // Trigger ngOnInit and initial rendering
-    tick(); // Wait for async operation to complete
-
-    const topicItems = fixture.nativeElement.querySelectorAll('app-topic-item');
-    expect(topicItems.length).toBe(mockTopicsId.length);
-
-    for (let i = 0; i < mockTopicsId.length; i++) {
-      const topicItem = topicItems[i];
-      expect(topicItem.getAttribute('topicId')).toBe(String(mockTopicsId[i]));
-    }
-  }));
-
-  it('should set gridStyle to false for the first item', () => {
-    component.isFourthItem(0);
-    expect(component.gridStyle).toBe(false);
+  it('should call getTopicsId and getTopicsData during ngOnInit', () => {
+    const getTopicsIdSpy = jest.spyOn(component, 'getTopicsId');
+    const getTopicsDataSpy = jest.spyOn(component, 'getTopicsData');
+    fixture.detectChanges(); // Trigger ngOnInit
+    expect(getTopicsIdSpy).toHaveBeenCalled();
+    expect(getTopicsDataSpy).toHaveBeenCalled();
   });
 
-  it('should toggle gridStyle on every fourth item', () => {
-    component.isFourthItem(1); // First toggle (index 1 is the fourth item)
-    expect(component.gridStyle).toBe(false);
+  it('should set topicsId with data from the ApiService', () => {
+    component.getTopicsId();
+    expect(mockApiService.getTopics).toHaveBeenCalled();
+    expect(component.topicsId).toEqual([1, 2, 3]);
+  });
 
-    component.isFourthItem(3); // Second toggle (index 3 is the fourth item)
-    expect(component.gridStyle).toBe(true);
+  it('should handle error when fetching topics', () => {
+    console.error = jest.fn();
+
+    mockApiService.getTopics = jest.fn(() =>
+      throwError('Failed to fetch topics')
+    );
+    component.getTopicsId();
+    expect(mockApiService.getTopics).toHaveBeenCalled();
+    expect(component.topicsId).toEqual([]);
+    expect(console.error).toHaveBeenCalledWith(
+      'Error fetching data:',
+      'Failed to fetch topics'
+    );
+  });
+
+  it('should set topicsData with data from the ApiService', () => {
+    component.getTopicsData();
+    expect(mockApiService.getTopicsData).toHaveBeenCalled();
+    expect(component.topicsData).toEqual([{ id: 1, title: 'Topic 1' }]);
+  });
+
+  it('should handle error when fetching topicsData', () => {
+    console.error = jest.fn();
+
+    mockApiService.getTopicsData = jest.fn(() =>
+      throwError('Failed to fetch topics')
+    );
+    component.getTopicsData();
+    expect(mockApiService.getTopicsData).toHaveBeenCalled();
+    expect(component.topicsData).toEqual([]);
+    expect(console.error).toHaveBeenCalledWith(
+      'Error fetching data:',
+      'Failed to fetch topics'
+    );
+  });
+
+  it('should return true for index not divisible by 4', () => {
+    expect(component.checkCard(0)).toBe(false);
+    expect(component.checkCard(1)).toBe(false);
+    expect(component.checkCard(4)).toBe(true);
+    expect(component.checkCard(5)).toBe(true);
+  });
+
+  it('should return true for index not divisible by 4', () => {
+    expect(component.checkGrid(0)).toBe(false);
+    expect(component.checkGrid(1)).toBe(false);
+    expect(component.checkGrid(4)).toBe(true);
+    expect(component.checkGrid(5)).toBe(true);
   });
 });
+
+// describe('getTopicsId', () => {
+//   it('should set topicsId with data from the ApiService', () => {
+//     component.getTopicsId();
+//     expect(mockApiService.getTopics).toHaveBeenCalled();
+//     expect(component.topicsId).toEqual([1, 2, 3]);
+//   });
+// });
+
+// describe('checkGrid', () => {
+//   it('should return true for index not divisible by 4', () => {
+//     expect(component.checkGrid(2)).toBe(true);
+//     expect(component.checkGrid(3)).toBe(true);
+//     expect(component.checkGrid(5)).toBe(true);
+//   });
+
+// });

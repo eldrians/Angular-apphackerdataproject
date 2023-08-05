@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { storiesUrl, baseUrl } from 'src/app/app.constant';
+import { storiesUrl, baseUrl } from '../../app.constant';
 import { forkJoin, Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 

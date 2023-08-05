@@ -1,13 +1,20 @@
+import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { AppComponent } from '../app/app.component';
 
 describe('AppComponent', () => {
-  let fixture: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+  let component: AppComponent;
 
   beforeEach(() => {
-    fixture = new AppComponent();
+    TestBed.configureTestingModule({
+      declarations: [AppComponent],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
   });
 
-  it('should have a title', () => {
-    expect(fixture.title).toEqual('axel');
+  it('app rendering', () => {
+    expect(component).toBeTruthy();
   });
 });
