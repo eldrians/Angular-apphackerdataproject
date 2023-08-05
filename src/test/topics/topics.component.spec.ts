@@ -30,7 +30,7 @@ describe('TopicsComponent', () => {
   it('should call getTopicsId and getTopicsData during ngOnInit', () => {
     const getTopicsIdSpy = jest.spyOn(component, 'getTopicsId');
     const getTopicsDataSpy = jest.spyOn(component, 'getTopicsData');
-    fixture.detectChanges(); 
+    fixture.detectChanges();
     expect(getTopicsIdSpy).toHaveBeenCalled();
     expect(getTopicsDataSpy).toHaveBeenCalled();
   });
@@ -91,20 +91,3 @@ describe('TopicsComponent', () => {
     expect(component.checkGrid(5)).toBe(true);
   });
 });
-
-// describe('getTopicsId', () => {
-//   it('should set topicsId with data from the ApiService', () => {
-//     component.getTopicsId();
-//     expect(mockApiService.getTopics).toHaveBeenCalled();
-//     expect(component.topicsId).toEqual([1, 2, 3]);
-//   });
-// });
-
-// describe('checkGrid', () => {
-//   it('should return true for index not divisible by 4', () => {
-//     expect(component.checkGrid(2)).toBe(true);
-//     expect(component.checkGrid(3)).toBe(true);
-//     expect(component.checkGrid(5)).toBe(true);
-//   });
-
-// });

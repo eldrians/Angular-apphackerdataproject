@@ -9,7 +9,7 @@ describe('TopicItemComponent', () => {
 
   beforeEach(() => {
     mockDataService = {
-      getIsHidden: jest.fn(() => true), // Mocking the getIsHidden method to return true
+      getIsHidden: jest.fn(() => true),
     };
 
     TestBed.configureTestingModule({

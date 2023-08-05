@@ -20,9 +20,8 @@ export class CommentsComponent {
       this.api.getCommentsData(this.commentsId).subscribe(
         (data) => {
           this.commentsData = data;
-          // console.log(this.commentsData)
-          // const dataComments = JSON.stringify(data);
-          // localStorage.setItem('dataComments', dataComments);
+          const dataComments = JSON.stringify(data);
+          localStorage.setItem('dataComments', dataComments);
         },
         (error) => {
           console.error('Error fetching data:', error);
