@@ -1,27 +1,46 @@
-# TestApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.6.
+## Demo
 
-## Development server
+https://github.com/eldrians/r17_axel/assets/91566708/4f366897-fa23-45f5-85aa-b8d1af12a72f
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+# Angular 15 Test ESB
 
-## Code scaffolding
+berikut adalah hasil test yang sudah saya kerjakan dengan spesifikasi:
+- berjalan sesuai dengan spesifikasi
+- membuat unit test 
+    - Statements: 89.76%
+    - Branch: 81.81%
+    - functions: 88.37%
+    - Lines: 89.34%
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## start
 
-## Build
+untuk memulai aplikasi clone project ini lalu
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+npm i
+```
 
-## Running unit tests
+lalu
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+npm start
+```
 
-## Running end-to-end tests
+lalu
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```bash
+ng serve
+```
 
-## Further help
+## Documentation
+#### tampilan awal
+![WhatsApp Image 2023-08-05 at 11 35 50](https://github.com/eldrians/r17_axel/assets/91566708/572500bf-5a62-419d-96a8-f278e8d719f9)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### tampilan modal
+![WhatsApp Image 2023-08-05 at 11 36 30](https://github.com/eldrians/r17_axel/assets/91566708/e72b2470-76cc-4c1d-8a45-74ba89f94482)
+
+### coverage test
+![WhatsApp Image 2023-08-05 at 11 35 01](https://github.com/eldrians/r17_axel/assets/91566708/6649220a-bbd1-4157-a72b-9032d358db94)
+
+![WhatsApp Image 2023-08-05 at 11 35 14](https://github.com/eldrians/r17_axel/assets/91566708/a23473c7-1e56-4906-afa2-6323e4e98b67)

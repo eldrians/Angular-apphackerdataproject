@@ -1,8 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { faCommentDots, faX } from '@fortawesome/free-solid-svg-icons';
-import { DataService } from 'src/app/services/data/data.service';
-
-interface InputData {
+import { DataService } from '../../services/data/data.service';
+export interface InputData {
   by: string;
   descendants: number;
   id: number;
@@ -35,7 +34,6 @@ export class ModalComponent {
   isHidden() {
     return this.global.getIsHidden();
   }
-
   getTopicData() {
     return this.global.getTopicData();
   }

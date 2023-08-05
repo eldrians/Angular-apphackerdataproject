@@ -4,9 +4,9 @@ import {
   faCommentDots,
   faClock,
 } from '@fortawesome/free-solid-svg-icons';
-import { DataService } from 'src/app/services/data/data.service';
+import { DataService } from '../../services/data/data.service';
 
-interface InputData {
+export interface InputData {
   by: string;
   descendants: number;
   id: number;
@@ -35,9 +35,5 @@ export class CardComponent {
   toggleCommentSection() {
     this.global.toggleCommentSection();
     this.global.setTopicData(this.topicData);
-  }
-
-  isHidden() {
-    return this.global.getIsHidden();
   }
 }

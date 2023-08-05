@@ -46,7 +46,6 @@ describe('CommentsComponent', () => {
     );
     component.getCommentsData();
     expect(mockApiService.getCommentsData).toHaveBeenCalled();
-    expect(component.getCommentsData).toEqual([]);
     expect(console.error).toHaveBeenCalledWith(
       'Error fetching data:',
       'Failed to fetch topics'

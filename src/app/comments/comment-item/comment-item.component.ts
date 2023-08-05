@@ -1,6 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { catchError, throwError } from 'rxjs';
-import { ApiService } from '../../services/api/api.service';
 
 interface InputData {
   by?: string;
@@ -19,6 +17,4 @@ interface InputData {
 })
 export class CommentItemComponent {
   @Input() commentData!: InputData | undefined;
-
-  constructor(private api: ApiService) {}
 }

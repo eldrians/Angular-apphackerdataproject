@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-interface InputData {
+export interface InputData {
   by: string;
   descendants: number;
   id: number;
@@ -16,7 +16,6 @@ interface InputData {
 })
 export class DataService {
   isHidden = true;
-  commentNumber!: number;
   topicData!: InputData | undefined;
 
   toggleCommentSection() {
@@ -25,14 +24,6 @@ export class DataService {
 
   getIsHidden() {
     return this.isHidden;
-  }
-
-  setCommentNumber(n: number) {
-    this.commentNumber = n;
-  }
-
-  getCommentNumber() {
-    return this.commentNumber;
   }
 
   setTopicData(topicData: any) {

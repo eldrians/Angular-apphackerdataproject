@@ -54,42 +54,4 @@ export class ApiService {
       })
     );
   }
-
-  getTopicItem(id: number): Observable<any> {
-    const cachedData = localStorage.getItem('topicData');
-    if (cachedData) {
-      return of(JSON.parse(cachedData));
-    } else {
-      return this.http.get(`${baseUrl}/item/${id}.json`).pipe(
-        map((res) => {
-          const data = JSON.stringify(res);
-          localStorage.setItem('topicData', data);
-          return res;
-        }),
-        catchError((error) => {
-          console.error('Error fetching data:', error);
-          return of([]);
-        })
-      );
-    }
-  }
-
-  getCommentItem(id: number): Observable<any> {
-    const cachedData = localStorage.getItem('commentData');
-    if (cachedData) {
-      return of(JSON.parse(cachedData));
-    } else {
-      return this.http.get(`${baseUrl}/item/${id}.json`).pipe(
-        map((res) => {
-          const data = JSON.stringify(res);
-          localStorage.setItem('commentData', data);
-          return res;
-        }),
-        catchError((error) => {
-          console.error('Error fetching data:', error);
-          return of([]);
-        })
-      );
-    }
-  }
 }
