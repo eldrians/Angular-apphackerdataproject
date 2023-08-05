@@ -27,7 +27,7 @@
       </div>
       <hr />
       <div class="py-2 overflow-x-auto h-[85%]">
-        <app-comments [commentsId]="topicData?.kids"></app-comments>
+        <app-comments [commentsId]="topicData?.kids || undefined"></app-comments>
       </div>
     </div>
   </div>

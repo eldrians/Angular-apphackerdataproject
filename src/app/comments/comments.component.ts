@@ -5,7 +5,7 @@ import { ApiService } from '../services/api/api.service';
   templateUrl: './comments.component.html',
 })
 export class CommentsComponent {
-  @Input() commentsId: number[] | undefined = [];
+  @Input() commentsId?: number[] = [];
   commentsIdx: number[] = [];
   commentsData: any[] = [];
 
@@ -16,15 +16,18 @@ export class CommentsComponent {
   }
 
   getCommentsData() {
-    this.api.getCommentsData(this.commentsIdx).subscribe(
-      (data) => {
-        this.commentsData = data;
-        const dataComments = JSON.stringify(data);
-        localStorage.setItem('dataComments', dataComments);
-      },
-      (error) => {
-        console.error('Error fetching data:', error);
-      }
-    );
+    if (this.commentsId) {
+      this.api.getCommentsData(this.commentsId).subscribe(
+        (data) => {
+          this.commentsData = data;
+          // console.log(this.commentsData)
+          // const dataComments = JSON.stringify(data);
+          // localStorage.setItem('dataComments', dataComments);
+        },
+        (error) => {
+          console.error('Error fetching data:', error);
+        }
+      );
+    }
   }
 }
