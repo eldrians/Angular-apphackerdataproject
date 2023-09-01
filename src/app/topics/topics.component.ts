@@ -19,8 +19,9 @@ export class TopicsComponent {
 
   getTopicsId() {
     this.api.getTopics().subscribe(
-      (res) => {
+      (res: any) => {
         this.topicsId = res as number[];
+        console.log(this.topicsId);
       },
       (error) => {
         console.error('Error fetching data:', error);
