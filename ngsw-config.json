@@ -27,7 +27,8 @@
       }
     }
   ],
-  "dataGroups": [{
+  "dataGroups": [
+    {
     "name": "id-topic",
     "urls": ["https://hacker-news.firebaseio.com/v0/askstories.json"],
     "cacheConfig": {
@@ -36,6 +37,16 @@
       "maxSize": 20,
       "timeout": "5s"
     }
-
-  }]
+  },
+  {
+    "name": "id-topic-data",
+    "urls": ["https://hacker-news.firebaseio.com/v0/item/*"],
+    "cacheConfig": {
+      "strategy": "freshness",
+      "maxAge": "1h",
+      "maxSize": 100,
+      "timeout": "5s"
+    }
+  }
+]
 }

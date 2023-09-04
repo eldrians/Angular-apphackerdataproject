@@ -21,8 +21,10 @@ export class TopicItemComponent {
   @Input() isCard!: boolean;
   @Input() topicData!: InputData | undefined;
 
-  constructor(private global: DataService) {
-    console.log('[2] data masuk');
+  constructor(private global: DataService) {}
+
+  ngOnInit() {
+    // console.log(this.topicData);
   }
 
   isHidden() {

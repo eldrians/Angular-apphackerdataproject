@@ -13,37 +13,28 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   getTopics(): Observable<any> {
-    const header = new HttpHeaders().set('Content-type', 'application/json');
-    return this.http.get(storiesUrl);
-    // // const cachedData = localStorage.getItem('topicsId');
-    // // if (cachedData) {
-    // //   console.log('[1x] data masuk');
-    // //   return of(JSON.parse(cachedData));
-    // // } else {
-    // return this.http.get(storiesUrl).pipe(
-    //   map((response) => {
-    //     const data = JSON.stringify(response);
-    //     localStorage.setItem('topicsId', data);
-    //     return response;
-    //   }),
-    //   catchError((error) => {
-    //     console.error('Error fetching data:', error);
-    //     return of([]);
-    //   })
-    // );
-    // }
+    return this.http.get(storiesUrl).pipe(
+      map((response) => {
+        return response;
+      }),
+      catchError((error) => {
+        console.error('Error fetching data:', error);
+        return of([]);
+      })
+    );
   }
 
   private getData(id: number): Observable<any> {
     return this.http.get(`${baseUrl}/item/${id}.json`);
   }
 
-  getTopicsData(ids: number[]): Observable<any[]> {
+  getTopicsData(ids: number[]): Observable<any> {
     const topics = ids.map((id) => this.getData(id));
     return forkJoin(topics).pipe(
       catchError((error) => {
         console.error('Error fetching data:', error);
         return [];
+        ``;
       })
     );
   }
