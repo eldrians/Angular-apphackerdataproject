@@ -27,6 +27,7 @@ export class ModalComponent {
 
   ngOnInit() {
     this.topicData = this.getTopicData();
+    console.log(this.topicData);
   }
   toggleCommentSection() {
     this.global.toggleCommentSection();
